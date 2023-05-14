@@ -1,0 +1,7 @@
+resource_group_name    = "rg-kv_terraform"
+location               = "West Europe"
+keyvault_name          = "testterraformtemplatekv"
+secret_name            = "DatabasePassword"
+secret_value           = "@Aa123456789!"
+key_name               = "key1"
+cert_name              = "certww"

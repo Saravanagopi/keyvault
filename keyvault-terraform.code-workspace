@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "keyvault-terraform"
+		},
+		{
+			"name": "keyvault-terraform-1",
+			"path": "keyvault-terraform/keyvault-terraform-1"
+		}
+	],
+	"settings": {}
+}
