@@ -26,24 +26,26 @@ resource "azurerm_key_vault" "keyvault" {
     tenant_id = data.azurerm_client_config.current.tenant_id
     object_id = "30b62b0e-04ee-459a-8b73-96061ef4f359"
 
-    key_permissions = [
-      "get"
-    ]
-
     secret_permissions = [
-      "get",
-      "list",
-      "set",
-      "delete"
+      "Get",
+      "Set"
     ]
-
   }
-
-  # network_acls {
-  #   default_action = "Deny" # "Allow" 
-  #   bypass         = "AzureServices" # "None"
-  #   ip_rules = ["50.50.50.50/24"]
-  # }
 }
 
+data "azurerm_key_vault" "keyvault" {
+  name                = var.keyvault_name
+  resource_group_name = var.resource_group_name
+}
+
+resource "azurerm_key_vault_secret" "db-pwd" {
+  name         = var.secret_name
+  value        = var.secret_value
+  key_vault_id = "${data.azurerm_key_vault.keyvault.id}"
+  tags      = {
+      "tag1": "tag_value_1"
+      "tag2": "tag_value_2"
+  }
+  depends_on = [azurerm_key_vault.keyvault]
+}
 
