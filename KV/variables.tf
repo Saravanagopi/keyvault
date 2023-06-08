@@ -23,3 +23,13 @@ variable "secret_value" {
   description = "Key Vault Secret value in Azure"
   sensitive   = true
 }
+
+variable keyvaultloop {
+    type = list(string)
+    default = ["keyvaulttemplategopi","keyvaulttemplategopi"]
+}
+
+variable rgloop {
+    type = list(string)
+    default = ["testrgkvgopi","testrgkvgopi"]
+}
