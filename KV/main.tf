@@ -36,6 +36,7 @@ resource "azurerm_key_vault" "keyvault" {
 data "azurerm_key_vault" "keyvault" {
   name                = var.keyvault_name
   resource_group_name = var.resource_group_name
+   depends_on = [azurerm_key_vault.keyvault]
 }
 
 resource "azurerm_key_vault_secret" "db-pwd" {
