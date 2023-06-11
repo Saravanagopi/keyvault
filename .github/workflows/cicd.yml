@@ -7,7 +7,27 @@ on:
   pull_request:
  
 jobs:
-  terraform:
+
+  - job: clijob
+    variables:
+        - template: '../Variables/datansg-${{ parameters.nsglocation }}-${{ parameters.environment }}.yml'
+    steps:
+        
+        - task: AzureCLI@2
+          displayName: 'Azure Deployment: Deploy Hubvnet IaaS Routetable'
+          inputs:
+             azureSubscription: '${{parameters.spn}}'
+             scriptType: ps
+             ScriptPath: '$(Pipeline.Workspace)/Routetable/Scripts/hubroutetable.ps1'
+             ScriptArguments: '-resourceGroup $(hubresourceGroup) 
+                               -routeTableName $(hubsubnet04routeTable) 
+                               -routeFile $(hubrouteFile04)
+                               -propagation $True'
+           enabled: true
+  
+  
+  - job: terraform
+    terraform:
     name: 'Terraform'
     env:
       ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
