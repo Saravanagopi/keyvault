@@ -19,13 +19,7 @@ jobs:
              azureSubscription: '${{parameters.spn}}'
              scriptType: ps
              ScriptPath: '$(Pipeline.Workspace)/Routetable/Scripts/hubroutetable.ps1'
-             ScriptArguments: '-resourceGroup $(hubresourceGroup) 
-                               -routeTableName $(hubsubnet04routeTable) 
-                               -routeFile $(hubrouteFile04)
-                               -propagation $True'
-           enabled: true
-  
-  
+          
   - job: terraform
     terraform:
     name: 'Terraform'
