@@ -8,10 +8,9 @@ name: AzureCLISample
  
  
 jobs:
-  build-and-deploy:
+  publish:
     runs-on: ubuntu-latest
     steps:
-
       - name: Check out repository
         uses: actions/checkout@v2
 
