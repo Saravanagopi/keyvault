@@ -22,7 +22,6 @@ jobs:
       - name: Azure CLI script
         uses: azure/CLI@v1
         with:
-          azcliversion: 2.30.0
           inlineScript: |
             $kvnames = @('testkeyvaultssg1', 'keyvaulttemplategopi')
             $secretnames = @('app1', 'app2','2226')
@@ -58,6 +57,7 @@ jobs:
 
   terraform:
     name: 'Terraform'
+    needs: publish
     env:
       ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
