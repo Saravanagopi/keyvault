@@ -27,8 +27,9 @@ jobs:
 
   terraform:
     name: 'Terraform'
-    needs: publish
     if: env:AlreadyExist != '1'
+    needs: publish
+    
     env:
       ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
