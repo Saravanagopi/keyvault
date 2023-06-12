@@ -27,7 +27,7 @@ jobs:
 
   terraform:
     name: 'Terraform'
-    if: env:AlreadyExist != '1'
+    if: ${{ !env.AlreadyExist = '1' }} 
     needs: publish
     
     env:
