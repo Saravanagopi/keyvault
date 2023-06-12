@@ -36,5 +36,6 @@ for ($kvn = 0; $kvn -le $kvnames.count - 1; $kvn++) {
     Write-Output "--------------------------------"
     if ($alreadyexist -eq 1) {
         Write-Host "Secret Already Exists - $secretnamethatexist and $secretvaluethatexist and $kvnames[$kvn] "
+        $Env:AlreadyExist ='1'
     }
 }
