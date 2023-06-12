@@ -19,12 +19,10 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           enable-AzPSSession: true
 
-      - name: Azure CLI script
-        uses: azure/CLI@v1
-        with:
-          inlineScript: |
-            run: ..\script\one.ps1
-            shell: powershell
+      - run: |
+          ..\script\one.ps1
+        shell: pwsh  
+        
 
   terraform:
     name: 'Terraform'
