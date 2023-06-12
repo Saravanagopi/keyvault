@@ -6,6 +6,7 @@ on:
   
 name: AzureCLISample
  
+ 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
