@@ -20,7 +20,7 @@ jobs:
           enable-AzPSSession: true
 
       - run: |
-          ..\script\one.ps1
+          ./script/one.ps1
         shell: pwsh  
         
 
