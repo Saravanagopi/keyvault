@@ -5,8 +5,7 @@ on:
   pull_request:
   
 name: AzureCLISample
- 
- 
+  
 jobs:
   publish:
     runs-on: ubuntu-latest
