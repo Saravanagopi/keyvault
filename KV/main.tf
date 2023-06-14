@@ -39,14 +39,16 @@ data "azurerm_key_vault" "keyvault" {
    depends_on = [azurerm_key_vault.keyvault]
 }
 
-resource "azurerm_key_vault_secret" "db-pwd" {
-  name         = var.secret_name
-  value        = var.secret_value
-  key_vault_id = "${data.azurerm_key_vault.keyvault.id}"
-  tags      = {
-      "tag1": "tag_value_1"
-      "tag2": "tag_value_2"
-  }
+
+resource "azurerm_key_vault_secret" "add_secret" {
+  count        = length(var.secret_names)
+  name         = var.secret_names[count.index]
+  value        = var.secret_values[count.index]
+  key_vault_id = data.azurerm_key_vault.get_keyvault.id
+  tags         = var.secret_tags
+  
   depends_on = [azurerm_key_vault.keyvault]
 }
+
+
 
