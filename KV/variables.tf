@@ -13,15 +13,14 @@ variable "keyvault_name" {
   description = "Key Vault name in Azure"
 }
 
-variable "secret_name" {
-  type        = string
-  description = "Key Vault Secret name in Azure"
+variable "secret_names" {
+  description = "Create Secret Names"
+  type        = list(string)
 }
 
-variable "secret_value" {
-  type        = string
-  description = "Key Vault Secret value in Azure"
-  sensitive   = true
+variable "secret_values" {
+  description = "Create Secret VALUES"
+  type        = list(string)
 }
 
 variable keyvaultloop {
